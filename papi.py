@@ -2,6 +2,7 @@
 import telebot
 import json
 import os
+from flask import Flask, request
 import random
 import string
 import time
@@ -16,7 +17,7 @@ ADMIN_IDS = [6606949931,7636298287,7800914151,1241797478,7828872301]  # YOUR TEL
 DATA_FILE = "data.json"
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="Markdown")
-
+app = Flask(__name__)
 # ================= DATABASE =================
 def load():
     if not os.path.exists(DATA_FILE):
@@ -684,4 +685,5 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
 
