@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import telebot
 import json
 import os
@@ -76,16 +77,16 @@ def start_cmd(message):
             "history": []
         }
         text = (
-            f"💖 Welcome {name}!\n\n"
-            "This is the *Valentine Love Game* 💕\n"
+            f"ðŸ’– Welcome {name}!\n\n"
+            "This is the *Valentine Love Game* ðŸ’•\n"
             "Find a partner, earn love points, get married,\n"
-            "and maybe… become parents 😏\n\n"
-            "Start by using /propose 💌"
+            "and maybeâ€¦ become parents ðŸ˜\n\n"
+            "Start by using /propose ðŸ’Œ"
         )
     else:
         text = (
-            f"💝 Welcome back {name}!\n"
-            "Your love journey continues 💕"
+            f"ðŸ’ Welcome back {name}!\n"
+            "Your love journey continues ðŸ’•"
         )
 
     bot.send_message(message.chat.id, text, parse_mode="Markdown")
@@ -108,12 +109,12 @@ def propose_cmd(message):
 
     # already in relationship
     if users[uid]["partner"] is not None:
-        bot.reply_to(message, "❌ You already have a partner.")
+        bot.reply_to(message, "âŒ You already have a partner.")
         return
 
     # already generated a code
     if uid in proposals.values():
-        bot.reply_to(message, "❌ You already generated a love code.\nWait until someone accepts or you break up.")
+        bot.reply_to(message, "âŒ You already generated a love code.\nWait until someone accepts or you break up.")
         return
 
     # generate unique 5-char code
@@ -126,11 +127,11 @@ def propose_cmd(message):
 
     bot.reply_to(
         message,
-        f"💌 *Love Proposal Created!*\n\n"
-        f"🔐 Your Love Code: `{code}`\n\n"
+        f"ðŸ’Œ *Love Proposal Created!*\n\n"
+        f"ðŸ” Your Love Code: `{code}`\n\n"
         "Ask your partner to accept it using:\n"
         "`/accept CODE`\n\n"
-        "❤️ Only one person can accept this code.",
+        "â¤ï¸ Only one person can accept this code.",
         parse_mode="Markdown"
     )
     
@@ -203,7 +204,7 @@ def accept_cmd(message):
 
     bot.send_message(
         message.chat.id,
-        f" *It�s a Match!*\n\n"
+        f" *It’s a Match!*\n\n"
         f" {users[proposer_id]['name']}  {users[uid]['name']}\n\n"
         "You are now partners!\n"
         "Start earning love points ",
@@ -279,7 +280,7 @@ def mylove_cmd(message):
     if not history:
         bot.reply_to(
             message,
-            " *Love History*\n\nYou don�t have any past relationships yet.",
+            " *Love History*\n\nYou don’t have any past relationships yet.",
             parse_mode="Markdown"
         )
         return
@@ -358,13 +359,13 @@ def kiss(message):
         bot.reply_to(message, " Someone is already in a process.")
         return
 
-    duration = random.randint(180, 300)  # 3�5 minutes
+    duration = random.randint(180, 300)  # 3–5 minutes
     end_time = time.time() + duration
 
     active_process[uid] = {"type": "kiss", "partner": pid, "end_time": end_time}
     active_process[pid] = {"type": "kiss", "partner": uid, "end_time": end_time}
 
-    bot.reply_to(message, " Kiss started! Stay connected for 3�5 minutes.\nUse /cancel to stop.")
+    bot.reply_to(message, " Kiss started! Stay connected for 3–5 minutes.\nUse /cancel to stop.")
 
     def finish():
         time.sleep(duration)
@@ -391,7 +392,7 @@ def holdhand(message):
         bot.reply_to(message, " Someone is already in a process.")
         return
 
-    duration = random.randint(60, 180)  # 1�3 minutes
+    duration = random.randint(60, 180)  # 1–3 minutes
     end_time = time.time() + duration
 
     active_process[uid] = {"type": "holdhand", "partner": pid, "end_time": end_time}
@@ -424,7 +425,7 @@ def hug(message):
         bot.reply_to(message, " Someone is already in a process.")
         return
 
-    duration = random.randint(300, 600)  # 5�10 minutes
+    duration = random.randint(300, 600)  # 5–10 minutes
     end_time = time.time() + duration
 
     active_process[uid] = {"type": "hug", "partner": pid, "end_time": end_time}
@@ -604,7 +605,7 @@ def global_cmd(message):
 
     text = " *Global Top 10 Love Points*\n\n"
     for i, (uid, data) in enumerate(top_users, start=1):
-        text += f"{i}. {data['name']} (ID: {uid}) � {data['points']} points\n"
+        text += f"{i}. {data['name']} (ID: {uid}) — {data['points']} points\n"
 
     bot.send_message(message.chat.id, text, parse_mode="Markdown")
     
@@ -683,3 +684,4 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
