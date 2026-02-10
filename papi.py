@@ -28,7 +28,7 @@ def webhook():
 
 if __name__ == "__main__":
     bot.remove_webhook()
-    bot.set_webhook(url=https://vallentine.onrender.com/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws)
+    bot.set_webhook(url="https://vallentine.onrender.com/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws")
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 # ================= DATABASE =================
 def load():
@@ -697,6 +697,7 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
 
 
 
