@@ -13,6 +13,7 @@ active_process = {}
 proposals = {}
 # ================= CONFIG =================
 BOT_TOKEN = "8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws"
+WEBHOOK_URL = f"https://YOUR_RENDER_URL/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws"
 ADMIN_IDS = [6606949931,7636298287,7800914151,1241797478,7828872301]  # YOUR TELEGRAM USER ID
 DATA_FILE = "data.json"
 
@@ -685,5 +686,6 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
 
 
