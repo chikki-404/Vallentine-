@@ -17,7 +17,7 @@ WEBHOOK_URL = f"https://vallentine.onrender.com/8329370399:AAEpImVot04S4OofAYzxi
 ADMIN_IDS = [6606949931,7636298287,7800914151,1241797478,7828872301]  # YOUR TELEGRAM USER ID
 DATA_FILE = "data.json"
 
-bot = telebot.TeleBot(8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws,parse_mode="Markdown")
+bot = telebot.TeleBot("8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws",parse_mode="Markdown")
 app = Flask(__name__)
 
 @app.route(f"/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws", methods=["POST"])
@@ -697,6 +697,7 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
 
 
 
