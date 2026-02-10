@@ -13,12 +13,23 @@ active_process = {}
 proposals = {}
 # ================= CONFIG =================
 BOT_TOKEN = "8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws"
-WEBHOOK_URL = f"https://YOUR_RENDER_URL/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws"
+WEBHOOK_URL = f"https://vallentine.onrender.com/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws"
 ADMIN_IDS = [6606949931,7636298287,7800914151,1241797478,7828872301]  # YOUR TELEGRAM USER ID
 DATA_FILE = "data.json"
 
-bot = telebot.TeleBot(BOT_TOKEN, parse_mode="Markdown")
+bot = telebot.TeleBot(8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws, parse_mode="Markdown")
 app = Flask(__name__)
+
+@app.route(f"/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws", methods=["POST"])
+def webhook():
+    update = telebot.types.Update.de_json(request.get_data().decode("utf-8"))
+    bot.process_new_updates([update])
+    return "!", 200
+
+if __name__ == "__main__":
+    bot.remove_webhook()
+    bot.set_webhook(url=https://vallentine.onrender.com/8329370399:AAEpImVot04S4OofAYzximVEcEAkPWJ_7ws)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 # ================= DATABASE =================
 def load():
     if not os.path.exists(DATA_FILE):
@@ -686,6 +697,7 @@ def reset_cmd(message):
 
     bot.reply_to(message, f" User {target_id} data has been reset.")
     
+
 
 
 
