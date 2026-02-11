@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: telegram-bot
-    runtime: python3
-      name: python
-      version: 3.10
-    buildCommand: pip install -r requirements.txt
-    startCommand: python3 papi.py
